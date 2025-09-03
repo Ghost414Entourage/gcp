@@ -15,7 +15,7 @@ apt install 'dbus*'
 
 sudo apt install -y lightdm gdm3
 
-apt install -y xfce4 xfce4-goodies
+
 
 
 
