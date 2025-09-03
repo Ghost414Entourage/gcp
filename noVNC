@@ -186,6 +186,20 @@ vncserver :1 -geometry 1280x800 -depth 24
 
 
 
+sudo rm /var/lib/dpkg/lock-frontend
+sudo rm /var/cache/apt/archives/lock
+
+sudo dpkg --configure -a
+
+sudo apt install -f
+
+sudo systemctl status unattended-upgrades
+sudo systemctl stop unattended-upgrades
+
+
+
+
+
 
 
 
