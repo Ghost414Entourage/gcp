@@ -1,3 +1,5 @@
+DISTRO="noble"
+
 echo "DISTRO is: $DISTRO"
 echo "REPO is: $REPO"
 rm -f "/etc/apt/sources.list.d/xpra.sources"
