@@ -7,6 +7,15 @@ sudo apt install -y xfce4-session gnome-session xterm
 
 sudo apt install -y lightdm gdm3
 
+sudo apt install -y gdm3 ubuntu-gnome-desktop
+
+apt install -y dbus-x11
+
+apt install 'dbus*' 
+
+sudo apt install -y lightdm gdm3
+
+
 
 
 
@@ -29,7 +38,7 @@ sudo systemctl restart lightdm
 
 
 
-sudo apt install -y gdm3 ubuntu-gnome-desktop
+
 
 
 sudo sed -i 's/#WaylandEnable=false/WaylandEnable=false/' /etc/gdm3/custom.conf
@@ -38,7 +47,7 @@ sudo sed -i 's/#WaylandEnable=false/WaylandEnable=false/' /etc/gdm3/custom.conf
 sudo systemctl restart gdm3
 
 
-sudo apt install -y lightdm gdm3
+
 
 
 
@@ -131,9 +140,7 @@ vncserver :1 -geometry 1280x800 -depth 24 -xstartup /usr/bin/xfce4-session
 
 ./utils/novnc_proxy --vnc localhost:5901 --listen 6080
 
-apt install -y dbus-x11
 
-apt install 'dbus*' 
 
 
 vncserver :1 -geometry 1280x800 -depth 24 -xstartup /usr/bin/dbus-launch /usr/bin/xfce4-session
