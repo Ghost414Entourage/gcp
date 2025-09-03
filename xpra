@@ -73,4 +73,23 @@ apt install -y xubuntu-desktop xfce4 xfce4-goodies
 
 
 
+xpra start :100 --start-child=xfce4-session --exit-with-children --bind-tcp=0.0.0.0:8080 --html=on
+
+
+
+netstat -tuln | grep 8080
+
+
+cat /run/xpra/100/server.log
+
+
+xpra attach tcp:34.45.185.44:8080
+
+
+killall xpra
+rm -rf /run/xpra/100
+
+
+http://34.45.185.44:8080
+
 
