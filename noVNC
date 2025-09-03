@@ -2,12 +2,12 @@ sudo apt install tigervnc-standalone-server -y
 
 sudo apt install -y git tigervnc-standalone-server xfce4 xfce4-goodies python3-websockify
 
-sudo apt install -y xterm xfce4-session gnome-session
 
+sudo apt install -y xfce4-session gnome-session xterm
 
 sudo apt install -y lightdm gdm3
 
-sudo apt install -y xfce4-session gnome-session
+
 
 
 sudo cp /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.backup 2>/dev/null || true
