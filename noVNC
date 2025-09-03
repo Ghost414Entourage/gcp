@@ -22,6 +22,9 @@ EOF'
 
 
 
+
+
+
 sudo systemctl restart lightdm
 
 
@@ -39,14 +42,7 @@ sudo apt install -y lightdm gdm3
 
 
 
-sudo bash -c 'cat > /etc/lightdm/lightdm.conf << EOF
-[Seat:*]
-user-session=xfce
-allow-guest=false
-[XDMCPServer]
-enabled=true
-port=177
-EOF'
+
 
 
 sudo dpkg-reconfigure lightdm
