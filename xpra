@@ -1,0 +1,61 @@
+#!/bin/bash
+# Get the distribution codename
+DISTRO=$(lsb_release -sc)
+
+# Download the XPRA GPG key
+sudo wget -O "/usr/share/keyrings/xpra.asc" https://xpra.org/xpra.asc
+
+# Download the XPRA sources file for the specific distribution
+sudo wget -O "/etc/apt/sources.list.d/xpra.sources" https://xpra.org/repos/$DISTRO/xpra.sources
+
+
+chmod +x setup-xpra-repo.sh
+
+./setup-xpra-repo.sh
+
+sudo apt update
+sudo apt install xpra
+
+sudo gpg --dearmor -o /usr/share/keyrings/xpra.gpg /usr/share/keyrings/xpra.asc
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+#!/bin/bash
+# Script to set up XPRA stable repository on Ubuntu/Debian-based systems
+# Uses XPRA's automated installer for reliability on new distributions like Plucky
+
+set -e  # Exit on any error
+
+echo "Detecting distribution codename..."
+DISTRO=$(lsb_release -sc)
+echo "Detected: $DISTRO (e.g., plucky for Ubuntu 25.04)"
+
+echo "Installing prerequisites if needed..."
+sudo apt update
+sudo apt install -y git python3
+
+echo "Cloning XPRA repository and running automated stable repo installer..."
+git clone https://github.com/Xpra-org/xpra.git
+cd xpra
+sudo python3 setup.py install-repo
+
+echo "Cleaning up..."
+cd ..
+rm -rf xpra
+
+echo "Repository setup complete. Now update APT and install XPRA:"
+echo "sudo apt update"
+echo "sudo apt install xpra"
+
+
+
+chmod +x setup-xpra-repo-fixed.sh
+
+sudo ./setup-xpra-repo-fixed.sh
+
+
+
