@@ -46,20 +46,6 @@ chmod 644 /usr/share/keyrings/xpra.gpg
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 echo "deb [signed-by=/usr/share/keyrings/xpra.asc] https://xpra.org/ noble main" | tee /etc/apt/sources.list.d/xpra.list
 
 
