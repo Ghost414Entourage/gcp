@@ -202,4 +202,35 @@ sudo systemctl stop unattended-upgrades
 
 
 
+mkdir -p /root/.vnc
+
+
+
+cat > /root/.vnc/xstartup << EOF
+#!/bin/sh
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+[ -r \$HOME/.Xresources ] && xrdb \$HOME/.Xresources
+xsetroot -solid grey
+vncconfig -iconic &
+if [ "\$1" = "gnome" ]; then
+    /usr/bin/dbus-launch /usr/bin/gnome-session &
+else
+    /usr/bin/dbus-launch /usr/bin/xfce4-session &
+fi
+EOF
+
+
+
+
+chmod +x /root/.vnc/xstartup
+
+
+
+
+
+
+
+
 
