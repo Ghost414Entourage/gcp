@@ -10,6 +10,56 @@ REPO="xpra"
 echo "REPO is: $REPO"
 
 
+
+
+ls -l /usr/share/keyrings/xpra.asc
+head -5 /usr/share/keyrings/xpra.asc
+
+
+
+wget -O "/usr/share/keyrings/xpra.asc" https://xpra.org/xpra.asc
+
+
+gpg --dearmor -o /usr/share/keyrings/xpra.gpg /usr/share/keyrings/xpra.asc
+
+
+gpg --show-keys /usr/share/keyrings/xpra.gpg
+
+
+cat /etc/apt/sources.list.d/xpra.sources
+
+
+echo "Types: deb
+URIs: https://xpra.org/
+Suites: noble
+Components: main
+Signed-By: /usr/share/keyrings/xpra.gpg" | tee /etc/apt/sources.list.d/xpra.sources
+
+
+chmod 644 /etc/apt/sources.list.d/xpra.sources
+chmod 644 /usr/share/keyrings/xpra.gpg
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 echo "deb [signed-by=/usr/share/keyrings/xpra.asc] https://xpra.org/ noble main" | tee /etc/apt/sources.list.d/xpra.list
 
 
