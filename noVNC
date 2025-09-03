@@ -15,7 +15,7 @@ apt install 'dbus*'
 
 sudo apt install -y lightdm gdm3
 
-
+apt install -y xfce4 xfce4-goodies
 
 
 
@@ -128,7 +128,7 @@ cd /home/googlebusiness/noVNC
 
 ./utils/novnc_proxy --vnc localhost:5901 --listen 6080
 
-apt install -y xfce4 xfce4-goodies
+
 
 
 vncserver -kill :1
