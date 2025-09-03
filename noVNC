@@ -1,0 +1,188 @@
+sudo apt install tigervnc-standalone-server -y
+
+sudo apt install -y git tigervnc-standalone-server xfce4 xfce4-goodies python3-websockify
+
+sudo apt install -y xterm xfce4-session gnome-session
+
+
+sudo apt install -y lightdm gdm3
+
+sudo apt install -y xfce4-session gnome-session
+
+
+sudo cp /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.backup 2>/dev/null || true
+sudo bash -c 'cat > /etc/lightdm/lightdm.conf << EOF
+[Seat:*]
+user-session=xfce
+allow-guest=false
+[XDMCPServer]
+enabled=true
+port=177
+EOF'
+
+
+
+sudo systemctl restart lightdm
+
+
+
+sudo apt install -y gdm3 ubuntu-gnome-desktop
+
+
+sudo sed -i 's/#WaylandEnable=false/WaylandEnable=false/' /etc/gdm3/custom.conf
+
+
+sudo systemctl restart gdm3
+
+
+sudo apt install -y lightdm gdm3
+
+
+
+sudo bash -c 'cat > /etc/lightdm/lightdm.conf << EOF
+[Seat:*]
+user-session=xfce
+allow-guest=false
+[XDMCPServer]
+enabled=true
+port=177
+EOF'
+
+
+sudo dpkg-reconfigure lightdm
+
+sudo dpkg-reconfigure gdm3
+
+
+vncserver :1 -geometry 1280x800 -depth 24 -xstartup "~/.vnc/xstartup gnome"
+
+
+
+mkdir -p ~/.vnc
+mv ~/.vnc/xstartup ~/.vnc/xstartup.backup 2>/dev/null || true
+cat > ~/.vnc/xstartup << EOF
+#!/bin/sh
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+[ -r \$HOME/.Xresources ] && xrdb \$HOME/.Xresources
+xsetroot -solid grey
+vncconfig -iconic &
+if [ "\$1" = "gnome" ]; then
+    gnome-session &
+else
+    startxfce4 &
+fi
+EOF
+chmod +x ~/.vnc/xstartup
+
+
+
+mkdir -p ~/.vnc
+
+mv ~/.vnc/xstartup ~/.vnc/xstartup.backup 2>/dev/null || true
+
+
+
+
+cat > ~/.vnc/xstartup << EOF
+#!/bin/sh
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+[ -r \$HOME/.Xresources ] && xrdb \$HOME/.Xresources
+xsetroot -solid grey
+vncconfig -iconic &
+if [ "\$1" = "gnome" ]; then
+    gnome-session &
+else
+    startxfce4 &
+fi
+EOF
+
+
+
+chmod +x ~/.vnc/xstartup
+
+
+vncserver :1 -geometry 1280x800 -depth 24
+
+
+cd ~/noVNC
+
+./utils/novnc_proxy --vnc localhost:5901 --listen 6080
+
+
+http://localhost:6080/vnc.html
+
+
+git clone https://github.com/novnc/noVNC.git /home/googlebusiness/noVNC
+
+
+cd /home/googlebusiness/noVNC
+
+./utils/novnc_proxy --vnc localhost:5901 --listen 6080
+
+apt install -y xfce4 xfce4-goodies
+
+
+vncserver -kill :1
+
+
+vncserver :1 -geometry 1280x800 -depth 24
+
+vncserver :1 -geometry 1280x800 -depth 24 -xstartup /usr/bin/xfce4-session
+
+./utils/novnc_proxy --vnc localhost:5901 --listen 6080
+
+apt install -y dbus-x11
+
+apt install 'dbus*' 
+
+
+vncserver :1 -geometry 1280x800 -depth 24 -xstartup /usr/bin/dbus-launch /usr/bin/xfce4-session
+
+
+vncserver :1 -geometry 1280x800 -depth 24 -xstartup "/usr/bin/dbus-launch /usr/bin/xfce4-session"
+
+
+
+
+cat > /root/.vnc/xstartup << EOF
+#!/bin/sh
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+[ -r \$HOME/.Xresources ] && xrdb \$HOME/.Xresources
+xsetroot -solid grey
+vncconfig -iconic &
+if [ "\$1" = "gnome" ]; then
+    /usr/bin/dbus-launch /usr/bin/gnome-session &
+else
+    /usr/bin/dbus-launch /usr/bin/xfce4-session &
+fi
+EOF
+chmod +x /root/.vnc/xstartup
+
+
+
+vncserver :1 -geometry 1280x800 -depth 24
+
+./utils/novnc_proxy --vnc localhost:5901 --listen 6080
+
+
+mkdir -p /root/.config/tigervnc && chown root:root /root/.config/tigervnc && chmod 700 /root/.config/tigervnc
+
+
+vncserver :1 -geometry 1280x800 -depth 24
+
+
+./utils/novnc_proxy --vnc localhost:5901 --listen 6080
+
+
+
+
+
+
+
+
