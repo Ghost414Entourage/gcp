@@ -87,7 +87,7 @@ netstat -tuln | grep 8080
 cat /run/xpra/100/server.log
 
 
-xpra attach tcp:34.45.185.44:8080
+xpra attach tcp:34.68.68.253:8080
 
 
 killall xpra
