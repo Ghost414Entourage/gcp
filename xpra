@@ -97,3 +97,4 @@ rm -rf /run/xpra/100
 http://34.45.185.44:8080
 
 
+apt install 'dbus*'
