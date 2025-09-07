@@ -185,7 +185,7 @@ vncserver :1 -geometry 1280x800 -depth 24
 
 
 
-
+sudo rm /var/lib/dpkg/lock
 sudo rm /var/lib/dpkg/lock-frontend
 sudo rm /var/cache/apt/archives/lock
 
