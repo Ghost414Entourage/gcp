@@ -219,4 +219,26 @@ sudo apt install -y gstreamer1.0-plugins-base gstreamer1.0-plugins-good \
 
 
 
+#!/bin/bash
+# Force a clean environment
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+
+# Set resolution options
+export CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES=1920x1080,2560x1440
+
+# Ensure PulseAudio is available
+export PULSE_SERVER=unix:/run/user/$(id -u)/pulse/native
+
+# Start Xpra with GNOME
+xpra start :100 \
+    --start-child="gnome-session --session=gnome-flashback-metacity" \
+    --bind-tcp=0.0.0.0:10000 \
+    --html=on \
+    --daemon=no \
+    --pulseaudio=yes
+
+
+
+
 
