@@ -2,7 +2,7 @@ sudo apt-get update
 sudo apt-get upgrade -y
 
 
-
+apt install -y build-essential
 sudo apt-get install -y wget curl lsb-release apt-transport-https software-properties-common
 
 
