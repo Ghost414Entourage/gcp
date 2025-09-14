@@ -181,6 +181,12 @@ chmod +x ~/start-xpra-gnome.sh
 
 
 
+echo "export CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES=1920x1080,2560x1440" > /home/googlebusiness/.chrome-remote-desktop-session
+echo "export PULSE_SERVER=unix:/run/user/\$(id -u)/pulse/native" >> /home/googlebusiness/.chrome-remote-desktop-session
+echo "exec /etc/X11/Xsession 'gnome-session'" >> /home/googlebusiness/.chrome-remote-desktop-session
+
+
+
 
 
 
