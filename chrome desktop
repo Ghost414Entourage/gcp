@@ -1,0 +1,59 @@
+sudo apt-get update
+sudo apt-get upgrade -y
+
+
+
+sudo apt-get install -y wget curl lsb-release apt-transport-https software-properties-common
+
+
+sudo apt-get install -y xfce4 xfce4-terminal
+sudo apt install xfce4 xfce4-goodies
+
+
+sudo apt-get install -y gnome-session gnome-terminal gdm3
+sudo apt install -y gnome-control-center
+
+
+
+
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+sudo apt-get install -f -y
+
+
+wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
+sudo dpkg -i chrome-remote-desktop_current_amd64.deb
+sudo apt-get install -f -y
+
+
+
+
+ls /opt/google/chrome-remote-desktop/
+
+
+
+
+sudo pkill -f chrome-remote-desktop
+
+
+pkill -u googlebusiness -f chrome-remote-desktop
+
+
+sudo apt-get install -y pavucontrol
+
+sudo apt-get install -y pipewire-audio pipewire-pulse
+
+apt install ubuntu-gnome-desktop
+
+
+
+
+
+echo "exec /etc/X11/Xsession gnome-session" > ~/.chrome-remote-desktop-session
+
+
+
+echo "exec /etc/X11/Xsession 'xfce4-session'" > ~/.chrome-remote-desktop-session
+
+
+
