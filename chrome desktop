@@ -259,6 +259,56 @@ sudo apt install -y python3-netifaces
 
 
 
+sudo cp /usr/lib/python3/dist-packages/xpra/server/window/windowicon_source.py \
+/usr/lib/python3/dist-packages/xpra/server/window/windowicon_source.py.bak
+
+
+
+
+
+
+
+
+
+sudo tee /usr/lib/python3/dist-packages/xpra/server/window/windowicon_source.py <<'EOF'
+from PIL import Image
+
+# Compatibility for Pillow >=10
+try:
+    Resampling = Image.Resampling
+except AttributeError:
+    # Older Pillow versions
+    class Resampling:
+        LANCZOS = Image.ANTIALIAS
+
+# ... rest of the xpra file unchanged ...
+
+# Find the line:
+# image = image.resize((rw, rh), Image.ANTIALIAS)
+# Replace it with:
+image = image.resize((rw, rh), Resampling.LANCZOS)
+EOF
+
+
+
+
+
+
+
+
+
+sudo sed -i.bak -e '/import PIL.Image/a\
+try:\
+    Resampling = Image.Resampling\
+except AttributeError:\
+    class Resampling:\
+        LANCZOS = Image.ANTIALIAS
+' /usr/lib/python3/dist-packages/xpra/server/window/windowicon_source.py
+
+sudo sed -i 's/Image.ANTIALIAS/Resampling.LANCZOS/' /usr/lib/python3/dist-packages/xpra/server/window/windowicon_source.py
+
+
+
 
 
 
