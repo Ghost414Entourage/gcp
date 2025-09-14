@@ -314,6 +314,7 @@ sudo sed -i 's/Image.ANTIALIAS/Resampling.LANCZOS/' /usr/lib/python3/dist-packag
 sudo rm -f /tmp/.X100-lock /tmp/.X11-unix/X100
 
 
+ps aux | grep X
 
 
 
