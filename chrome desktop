@@ -208,6 +208,10 @@ sudo apt install firefox -y
 
 
 
+sudo apt install at-spi2-core -y
+
+
+
 
 
 
