@@ -254,3 +254,11 @@ sudo apt install -y ffmpeg \
 
 
 
+sudo apt install -y python3-netifaces
+
+
+
+
+
+
+
