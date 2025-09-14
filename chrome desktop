@@ -120,5 +120,6 @@ systemctl get-default
 sudo systemctl start display-manager
 
 
+sudo passwd googlebusiness
 
 
