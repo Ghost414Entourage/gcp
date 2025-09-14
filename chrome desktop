@@ -123,3 +123,65 @@ sudo systemctl start display-manager
 sudo passwd googlebusiness
 
 
+
+
+
+
+sudo apt update
+sudo apt install -y xpra pulseaudio
+
+
+
+sudo apt update
+sudo apt install -y xpra ubuntu-gnome-desktop pulseaudio dbus-x11 x11-xserver-utils
+
+
+http://YOUR_VM_IP:10000
+
+
+xpra stop :100
+
+
+
+
+
+
+
+
+nano ~/start-xpra-gnome.sh
+
+
+
+#!/bin/bash
+# Set resolution options
+export CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES=1920x1080,2560x1440
+
+# Ensure PulseAudio is available
+export PULSE_SERVER=unix:/run/user/$(id -u)/pulse/native
+
+# Start Xpra with GNOME
+xpra start :100 \
+    --start-child="gnome-session" \
+    --bind-tcp=0.0.0.0:10000 \
+    --html=on \
+    --daemon=no \
+    --pulseaudio=yes
+
+
+
+
+
+
+chmod +x ~/start-xpra-gnome.sh
+
+
+~/start-xpra-gnome.sh
+
+
+
+
+
+
+
+
+
