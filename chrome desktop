@@ -191,3 +191,25 @@ echo "exec /etc/X11/Xsession 'gnome-session'" >> /home/googlebusiness/.chrome-re
 
 
 
+
+
+
+sudo snap remove firefox
+sudo add-apt-repository ppa:mozillateam/ppa -y
+echo '
+Package: firefox*
+Pin: release o=LP-PPA-mozillateam
+Pin-Priority: 501
+' | sudo tee /etc/apt/preferences.d/mozilla-firefox
+
+sudo apt update
+sudo apt install firefox -y
+
+
+
+
+
+
+
+
+
