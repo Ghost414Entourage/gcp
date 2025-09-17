@@ -174,5 +174,10 @@ pulseaudio --start --exit-idle-time=-1
 pactl info
 
 
+sudo apt install -y libpulse-dev build-essential git
+cd /opt
+git clone https://github.com/your-choice/pulseaudio-webrtc.git
+cd pulseaudio-webrtc
+# Build per instructions (may require meson/ninja)
 
 
