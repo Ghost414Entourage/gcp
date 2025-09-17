@@ -150,6 +150,9 @@ pulseaudio --system --daemonize
 
 sudo Xvfb :99 -screen 0 1024x768x24 -nolisten tcp & echo $! > /tmp/xvfb.pid
 export DISPLAY=:99
+sudo kill $(cat /tmp/xvfb.pid) || sudo pkill Xvfb
+rm -f /tmp/xvfb.pid
+
 
 
 
