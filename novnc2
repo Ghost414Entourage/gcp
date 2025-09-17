@@ -54,7 +54,6 @@ EOF
 
 
 
-
 sudo Xorg :1 -config /etc/X11/xorg.conf -nolisten tcp & echo $! > /tmp/xorg1.pid
 
 
