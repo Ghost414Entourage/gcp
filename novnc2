@@ -148,7 +148,8 @@ sudo apt install -y alsa-utils alsa-plugins
 
 pulseaudio --system --daemonize
 
-
+sudo Xvfb :99 -screen 0 1024x768x24 -nolisten tcp & echo $! > /tmp/xvfb.pid
+export DISPLAY=:99
 
 
 
