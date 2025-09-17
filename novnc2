@@ -147,6 +147,8 @@ sudo apt install -y alsa-utils alsa-plugins alsa-base
 
 sudo apt install -y ubuntu-sounds
 
+find /usr/share/sounds -type f -name "*.wav" | head -n 5
+
 
 pulseaudio --system --daemonize
 
