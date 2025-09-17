@@ -96,7 +96,7 @@ export DISPLAY=:1
 startxfce4 &
 
 
-
+x11vnc -display :1 -forever -nopw -listen localhost -xkb -shared &
 
 
 
