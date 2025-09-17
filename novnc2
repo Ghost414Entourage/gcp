@@ -15,6 +15,7 @@ sudo apt install -y xserver-xorg-video-dummy
 apt update
 apt install tigervnc-standalone-server tigervnc-common -y
 
+vncserver :1
 
 
 
