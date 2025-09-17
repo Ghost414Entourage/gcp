@@ -1,0 +1,170 @@
+sudo apt update
+sudo apt install -y \
+  xvfb x11-xserver-utils x11-apps \
+  xserver-xephyr \
+  xserver-xorg-core xserver-xorg-video-dummy xinit \
+  mesa-utils \
+  jwm x11vnc
+
+
+sudo apt install -y software-properties-common
+sudo add-apt-repository universe
+sudo apt update
+sudo apt install -y xserver-xorg-video-dummy
+
+
+
+
+
+sudo apt install -y xfce4 xfce4-goodies
+
+
+
+
+
+
+sudo tee /etc/X11/xorg.conf >/dev/null <<'EOF'
+Section "Device"
+  Identifier  "DummyDevice"
+  Driver      "dummy"
+  VideoRam    256000
+EndSection
+
+Section "Monitor"
+  Identifier "DummyMonitor"
+  HorizSync    30-80
+  VertRefresh  60
+EndSection
+
+Section "Screen"
+  Identifier "DummyScreen"
+  Monitor "DummyMonitor"
+  Device "DummyDevice"
+  DefaultDepth 24
+  SubSection "Display"
+    Depth 24
+    Modes "1920x1080"
+  EndSubSection
+EndSection
+EOF
+
+
+
+
+
+
+
+
+sudo Xorg :1 -config /etc/X11/xorg.conf -nolisten tcp & echo $! > /tmp/xorg1.pid
+
+
+
+export DISPLAY=:1
+
+
+xdpyinfo -display :1 | head -n 5
+
+
+
+
+
+
+# Make sure DISPLAY is pointing at Xdummy
+export DISPLAY=:1
+
+# Start a simple xfce4-session
+startxfce4 &
+
+
+
+ps aux | grep xfce4 | grep -v grep
+
+
+sudo apt install -y dbus-x11
+
+
+
+
+
+# Kill any leftover xfce4-session
+pkill -f xfce4-session || true
+
+# Make sure DISPLAY is set
+export DISPLAY=:1
+
+# Restart Xfce
+startxfce4 &
+
+
+
+
+
+
+
+sudo apt install -y git python3-websockify python3-pip
+cd /opt
+sudo git clone https://github.com/novnc/noVNC.git
+cd noVNC
+
+
+
+sudo apt update
+sudo apt install -y websockify
+
+
+
+sudo apt install -y pipx
+pipx install websockify
+
+
+
+
+# Set DISPLAY for Xdummy
+export DISPLAY=:1
+
+# Launch noVNC
+cd /opt/noVNC
+./utils/launch.sh --vnc localhost:5900 --listen 6080 &
+
+
+http://<YOUR_UBUNTU_IP>:6080/vnc.html
+
+
+
+cd /opt/noVNC
+
+
+websockify --web . 6080 localhost:5900 &
+
+
+
+sudo apt update
+sudo apt install -y pulseaudio pulseaudio-utils paprefs pavucontrol
+
+
+sudo apt install -y alsa-utils alsa-plugins
+
+
+
+pulseaudio --system --daemonize
+
+
+
+
+
+# Create user if needed
+sudo adduser xfceuser
+
+# Switch to that user
+sudo su - xfceuser
+
+# Start PulseAudio normally (per-user)
+pulseaudio --start --exit-idle-time=-1
+
+
+
+pactl info
+
+
+
+
