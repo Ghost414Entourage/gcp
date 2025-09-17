@@ -97,6 +97,8 @@ startxfce4 &
 
 x11vnc -display :1 -forever -nopw -listen localhost -xkb -shared &
 
+x11vnc -display :1 -forever -nopw -xkb -shared -httpport 6080 &
+
 
 
 
