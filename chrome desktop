@@ -1,3 +1,6 @@
+https://cloud.google.com/architecture/chrome-desktop-remote-on-compute-engine
+
+
 sudo apt-get update
 sudo apt-get upgrade -y
 
