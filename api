@@ -3,3 +3,8 @@ https://developers.google.com/search/docs/crawling-indexing/indexable-file-types
 https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list
 
 
+filetype:pdf firewall 1-1023 
+
+site:nist.gov port to block
+
+
