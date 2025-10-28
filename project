@@ -1,4 +1,0 @@
-gcloud projects list
-
-gcloud compute instances list --project
-
